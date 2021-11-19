@@ -9,18 +9,23 @@ export const NOTE_1 = {
       children: [{ text: 'Action Items' }],
     },
     {
-      type: 'list-item',
-      children: [{ text: 'Get milk from the store' }],
+      type: 'bulleted-list',
+      children: [
+        {
+          type: 'list-item',
+          children: [{ text: 'Get milk from the store' }],
+        },
+        {
+          type: 'list-item',
+          children: [{ text: 'Finish engineering test' }],
+        },
+        {
+          type: 'list-item',
+          children: [{ text: 'Call mom about vacation' }],
+        },
+      ],
     },
-    {
-      type: 'list-item',
-      children: [{ text: 'Finish engineering test' }],
-    },
-    {
-      type: 'list-item',
-      children: [{ text: 'Call mom about vacation' }],
-    },
-  ] as unknown as Array<Descendant>
+  ] as unknown as Array<Descendant>,
 }
 
 export const NOTE_2 = {
@@ -43,19 +48,22 @@ export const NOTE_2 = {
       type: 'paragraph',
       children: [
         {
-          text:
-            "Since it's rich text, you can do things like turn a selection of text ",
+          text: "Since it's rich text, you can do things like turn a selection of text ",
         },
         { text: 'bold', bold: true },
         {
-          text:
-            ', or add a semantically rendered block quote in the middle of the page, like this:',
+          text: ', or add a semantically rendered block quote in the middle of the page, like this:',
         },
       ],
     },
     {
-      type: 'list-item',
-      children: [{ text: 'Here is a bullet' }],
+      type: 'bulleted-list',
+      children: [
+        {
+          type: 'list-item',
+          children: [{ text: 'Here is a bullet' }],
+        },
+      ],
     },
     {
       type: 'block-quote',
@@ -65,5 +73,5 @@ export const NOTE_2 = {
       type: 'paragraph',
       children: [{ text: 'Try it out for yourself!' }],
     },
-  ] as unknown as Array<Descendant>
+  ] as unknown as Array<Descendant>,
 }
