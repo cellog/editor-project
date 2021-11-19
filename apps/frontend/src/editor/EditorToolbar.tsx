@@ -1,25 +1,67 @@
 import React, { MouseEventHandler } from 'react'
+import MUIButton from '@mui/material/Button'
+import FormatUnderlinedOutlinedIcon from '@mui/icons-material/FormatUnderlinedOutlined'
+import FormatBoldOutlinedIcon from '@mui/icons-material/FormatBoldOutlined'
+import FormatItalicOutlinedIcon from '@mui/icons-material/FormatItalicOutlined'
+import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined'
+import FormatQuoteOutlinedIcon from '@mui/icons-material/FormatQuoteOutlined'
+import FormatListNumberedOutlinedIcon from '@mui/icons-material/FormatListNumberedOutlined'
+import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
+
 import { useSlate } from 'slate-react'
+
 import { toggleBlock, toggleMark, isBlockActive, isMarkActive } from './helpers'
 import { CustomElementType } from './CustomElement'
 import { CustomText } from './CustomLeaf'
 
+const icons = {
+  bold: <FormatBoldOutlinedIcon />,
+  italic: <FormatItalicOutlinedIcon />,
+  underlined: <FormatUnderlinedOutlinedIcon />,
+  code: <CodeOutlinedIcon />,
+  h1: 'h1',
+  h2: 'h2',
+  quote: <FormatQuoteOutlinedIcon />,
+  list_numbered: <FormatListNumberedOutlinedIcon />,
+  list_bulleted: <FormatListBulletedOutlinedIcon />,
+}
+
 interface ButtonProps {
   active: boolean
   onMouseDown: MouseEventHandler<HTMLButtonElement>
+  icon?: keyof typeof icons
 }
 
-const Button: React.FC<ButtonProps> = ({ active, children, onMouseDown }) => (
-  <button onMouseDown={onMouseDown} style={{ backgroundColor: active ? '#333' : 'white', color: active ? 'white' : '#333', border: '1px solid #eee' }}>{children}</button>
-)
-
-const Icon: React.FC = ({ children }) => (
-  <span>{children}</span>
-)
+const Button: React.FC<ButtonProps> = ({
+  active,
+  children,
+  onMouseDown,
+  icon,
+}) => {
+  if (icon) {
+    return (
+      <MUIButton
+        onMouseDown={onMouseDown}
+        variant={active ? 'contained' : 'outlined'}
+      >
+        {icons[icon]}
+      </MUIButton>
+    )
+  }
+  return (
+    <MUIButton
+      onMouseDown={onMouseDown}
+      variant={active ? 'contained' : 'outlined'}
+      startIcon={icon}
+    >
+      {children}
+    </MUIButton>
+  )
+}
 
 interface BlockButtonProps {
   format: CustomElementType
-  icon: string
+  icon: keyof typeof icons
 }
 
 const BlockButton: React.FC<BlockButtonProps> = ({ format, icon }) => {
@@ -31,17 +73,15 @@ const BlockButton: React.FC<BlockButtonProps> = ({ format, icon }) => {
         event.preventDefault()
         toggleBlock(editor, format)
       }}
-    >
-      <Icon>{icon}</Icon>
-    </Button>
+      icon={icon}
+    />
   )
 }
 
 interface MarkButtonProps {
   format: keyof CustomText
-  icon: string
+  icon: keyof typeof icons
 }
-
 
 const MarkButton: React.FC<MarkButtonProps> = ({ format, icon }) => {
   const editor = useSlate()
@@ -52,9 +92,8 @@ const MarkButton: React.FC<MarkButtonProps> = ({ format, icon }) => {
         event.preventDefault()
         toggleMark(editor, format)
       }}
-    >
-      <Icon>{icon}</Icon>
-    </Button>
+      icon={icon}
+    />
   )
 }
 
@@ -68,8 +107,14 @@ export const EditorToolbar: React.FC = () => {
       <BlockButton format={CustomElementType.headingOne} icon="h1" />
       <BlockButton format={CustomElementType.headingTwo} icon="h2" />
       <BlockButton format={CustomElementType.blockQuote} icon="quote" />
-      <BlockButton format={CustomElementType.numberedList} icon="list_numbered" />
-      <BlockButton format={CustomElementType.bulletedList} icon="list_bulleted" />
+      <BlockButton
+        format={CustomElementType.numberedList}
+        icon="list_numbered"
+      />
+      <BlockButton
+        format={CustomElementType.bulletedList}
+        icon="list_bulleted"
+      />
     </div>
   )
 }
