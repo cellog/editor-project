@@ -9,6 +9,7 @@ import { Editable, withReact, Slate, ReactEditor } from 'slate-react'
 import { EditorToolbar } from './EditorToolbar'
 import { CustomElement } from './CustomElement'
 import { CustomLeaf, CustomText } from './CustomLeaf'
+import { Debug } from './Debug'
 
 // Slate suggests overwriting the module to include the ReactEditor, Custom Elements & Text
 // https://docs.slatejs.org/concepts/12-typescript
@@ -25,27 +26,30 @@ interface EditorProps {
   placeholder?: string
 }
 
-export const Editor: React.FC<EditorProps> = ({ initialValue = [], placeholder }) => {
+export const Editor: React.FC<EditorProps> = ({
+  initialValue = [],
+  placeholder,
+}) => {
   const [value, setValue] = useState<Array<Descendant>>(initialValue)
-  const renderElement = useCallback(props => <CustomElement {...props} />, [])
-  const renderLeaf = useCallback(props => <CustomLeaf {...props} />, [])
+  const renderElement = useCallback((props) => <CustomElement {...props} />, [])
+  const renderLeaf = useCallback((props) => <CustomLeaf {...props} />, [])
   const editor = useMemo(() => withHistory(withReact(createEditor())), [])
 
   return (
-    <Slate editor={editor} value={value} onChange={value => setValue(value)}>
+    <Slate editor={editor} value={value} onChange={(value) => setValue(value)}>
       <EditorToolbar />
       <Editable
         renderElement={renderElement}
         renderLeaf={renderLeaf}
         placeholder={placeholder}
         onKeyDown={handleHotkeys(editor)}
-
         // The dev server injects extra values to the editr and the console complains
         // so we override them here to remove the message
         autoCapitalize="false"
         autoCorrect="false"
         spellCheck="false"
       />
+      <Debug />
     </Slate>
   )
 }
