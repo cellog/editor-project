@@ -104,17 +104,11 @@ export const EditorToolbar: React.FC = () => {
       <MarkButton format="italic" icon="italic" />
       <MarkButton format="underline" icon="underlined" />
       <MarkButton format="code" icon="code" />
-      <BlockButton format={CustomElementType.headingOne} icon="h1" />
-      <BlockButton format={CustomElementType.headingTwo} icon="h2" />
-      <BlockButton format={CustomElementType.blockQuote} icon="quote" />
-      <BlockButton
-        format={CustomElementType.numberedList}
-        icon="list_numbered"
-      />
-      <BlockButton
-        format={CustomElementType.bulletedList}
-        icon="list_bulleted"
-      />
+      <BlockButton format="heading-one" icon="h1" />
+      <BlockButton format="heading-two" icon="h2" />
+      <BlockButton format="block-quote" icon="quote" />
+      <BlockButton format="numbered-list" icon="list_numbered" />
+      <BlockButton format="bulleted-list" icon="list_bulleted" />
     </div>
   )
 }
