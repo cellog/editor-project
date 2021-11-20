@@ -9,7 +9,8 @@
     "frontend:dev": "npm run dev -w frontend",
     "backend:dev": "npm run dev -w backend",
     "dev": "run-p frontend:dev backend:dev",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "test:frontend": "cd apps/frontend && jest"
   },
   "resolutions": {
     "react": "^17.0.2",
