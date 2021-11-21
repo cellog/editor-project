@@ -10,6 +10,7 @@ import { EditorToolbar } from './EditorToolbar'
 import { CustomElement } from './CustomElement'
 import { CustomLeaf, CustomText } from './CustomLeaf'
 import { Debug } from './Debug'
+import { withHtml } from './helpers/withHtml'
 
 // Slate suggests overwriting the module to include the ReactEditor, Custom Elements & Text
 // https://docs.slatejs.org/concepts/12-typescript
@@ -33,7 +34,11 @@ export const Editor: React.FC<EditorProps> = ({
   const [value, setValue] = useState<Array<Descendant>>(initialValue)
   const renderElement = useCallback((props) => <CustomElement {...props} />, [])
   const renderLeaf = useCallback((props) => <CustomLeaf {...props} />, [])
-  const editor = useMemo(() => withHistory(withReact(createEditor())), [])
+  // note: withHtml must be AFTER withReact for copy/paste of html to preserve formatting, not sure why
+  const editor = useMemo(
+    () => withHistory(withHtml(withReact(createEditor()))),
+    []
+  )
 
   return (
     <Slate editor={editor} value={value} onChange={(value) => setValue(value)}>
