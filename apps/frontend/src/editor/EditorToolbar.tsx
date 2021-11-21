@@ -7,6 +7,7 @@ import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined'
 import FormatQuoteOutlinedIcon from '@mui/icons-material/FormatQuoteOutlined'
 import FormatListNumberedOutlinedIcon from '@mui/icons-material/FormatListNumberedOutlined'
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
+import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined'
 
 import { useSlate } from 'slate-react'
 
@@ -24,6 +25,7 @@ const icons = {
   quote: <FormatQuoteOutlinedIcon />,
   list_numbered: <FormatListNumberedOutlinedIcon />,
   list_bulleted: <FormatListBulletedOutlinedIcon />,
+  link: <LinkOutlinedIcon />,
 }
 
 interface ButtonProps {
@@ -104,6 +106,7 @@ export const EditorToolbar: React.FC = () => {
       <MarkButton format="italic" icon="italic" />
       <MarkButton format="underline" icon="underlined" />
       <MarkButton format="code" icon="code" />
+      <MarkButton format="href" icon="link" />
       <BlockButton format="heading-one" icon="h1" />
       <BlockButton format="heading-two" icon="h2" />
       <BlockButton format="block-quote" icon="quote" />

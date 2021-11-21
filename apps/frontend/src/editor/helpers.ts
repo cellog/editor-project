@@ -123,7 +123,11 @@ export const toggleMark = (editor: Editor, format: keyof CustomText): void => {
   if (isActive) {
     Editor.removeMark(editor, format)
   } else {
-    Editor.addMark(editor, format, true)
+    if (format === 'href') {
+      Editor.addMark(editor, format, 'http://example.com')
+    } else {
+      Editor.addMark(editor, format, true)
+    }
   }
 }
 

@@ -7,9 +7,14 @@ export interface CustomText extends BaseText {
   code?: boolean
   italic?: boolean
   underline?: boolean
+  href?: string
 }
 
-export const CustomLeaf: React.FC<RenderLeafProps> = ({ attributes, children, leaf }) => {
+export const CustomLeaf: React.FC<RenderLeafProps> = ({
+  attributes,
+  children,
+  leaf,
+}) => {
   if (leaf.bold) {
     children = <strong>{children}</strong>
   }
@@ -26,7 +31,13 @@ export const CustomLeaf: React.FC<RenderLeafProps> = ({ attributes, children, le
     children = <u>{children}</u>
   }
 
+  if (leaf.href) {
+    children = (
+      <a href={leaf.href} target="_blank" rel="noreferrer noopener">
+        {children}
+      </a>
+    )
+  }
+
   return <span {...attributes}>{children}</span>
 }
-
-
