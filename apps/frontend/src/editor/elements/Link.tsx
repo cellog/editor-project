@@ -19,13 +19,11 @@ export function Link({ href, children }: LinkProps): React.ReactElement {
   const editor = useSlate()
   const [anchorEl, setAnchorEl] = useState<HTMLAnchorElement | null>(null)
   const [newHref, setNewHref] = useState(href)
+  const aRef = useRef<HTMLAnchorElement>(null)
   const linkRef = useRef<HTMLAnchorElement>(null)
-  const onClick = useCallback(
-    (event: React.MouseEvent<HTMLAnchorElement>) => {
-      setAnchorEl(anchorEl ? null : event.currentTarget)
-    },
-    [anchorEl]
-  )
+  const onClick = useCallback(() => {
+    setAnchorEl(anchorEl ? null : aRef.current)
+  }, [anchorEl])
   const resetAndClose = useCallback(() => {
     setNewHref(href)
     setAnchorEl(null)
@@ -52,11 +50,15 @@ export function Link({ href, children }: LinkProps): React.ReactElement {
       document.removeEventListener('keydown', listenForEscape)
     }
   }, [anchorEl])
+  useEffect(() => {
+    // trigger the popup immediately on adding a link
+    aRef.current?.click()
+  }, [])
   const id = anchorEl ? `link-${href}` : undefined
   return (
     <>
-      <Tooltip title={href} arrow onClick={() => alert('h')}>
-        <a href={href} onClick={onClick}>
+      <Tooltip title={href} arrow>
+        <a ref={aRef} href={href} onClick={onClick}>
           {children}
         </a>
       </Tooltip>
