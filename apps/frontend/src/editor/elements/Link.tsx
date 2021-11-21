@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { Transforms } from 'slate'
 import { ReactEditor, useSlate } from 'slate-react'
 import Tooltip from '@mui/material/Tooltip'
@@ -11,6 +11,8 @@ import Button from '@mui/material/Button'
 import Input from '@mui/material/Input'
 import Typography from '@mui/material/Typography'
 import OpenInNewOutlinedIcon from '@mui/icons-material/OpenInNewOutlined'
+import isHotkey from 'is-hotkey'
+
 import { LinkProps } from './types'
 
 export function Link({ href, children }: LinkProps): React.ReactElement {
@@ -37,6 +39,19 @@ export function Link({ href, children }: LinkProps): React.ReactElement {
     Transforms.setNodes(editor, { href: newHref }, { at: path })
     setAnchorEl(null)
   }, [anchorEl, editor, newHref])
+  useEffect(() => {
+    const listenForEscape = (e: KeyboardEvent) => {
+      if (anchorEl) {
+        if (isHotkey('esc', e)) {
+          setAnchorEl(null)
+        }
+      }
+    }
+    document.addEventListener('keydown', listenForEscape)
+    return () => {
+      document.removeEventListener('keydown', listenForEscape)
+    }
+  }, [anchorEl])
   const id = anchorEl ? `link-${href}` : undefined
   return (
     <>

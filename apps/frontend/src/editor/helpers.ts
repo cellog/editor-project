@@ -34,10 +34,6 @@ export const toggleBlock = (
 const matchElement = (type: CustomElementType) => (n: Node) =>
   !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === type
 const matchListItem = matchElement('list-item')
-const matchList = (n: Node) =>
-  !Editor.isEditor(n) &&
-  SlateElement.isElement(n) &&
-  (n.type === 'bulleted-list' || n.type === 'numbered-list')
 
 export const nestBlock = (editor: Editor, direction: 1 | -1 = 1): void => {
   // retrieve the closest list-item
