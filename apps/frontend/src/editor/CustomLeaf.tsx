@@ -2,6 +2,8 @@ import React from 'react'
 import { BaseText } from 'slate'
 import { RenderLeafProps } from 'slate-react'
 
+import { Link } from './elements'
+
 export interface CustomText extends BaseText {
   bold?: boolean
   code?: boolean
@@ -32,11 +34,7 @@ export const CustomLeaf: React.FC<RenderLeafProps> = ({
   }
 
   if (leaf.href) {
-    children = (
-      <a href={leaf.href} target="_blank" rel="noreferrer noopener">
-        {children}
-      </a>
-    )
+    children = <Link href={leaf.href}>{children}</Link>
   }
 
   return <span {...attributes}>{children}</span>
