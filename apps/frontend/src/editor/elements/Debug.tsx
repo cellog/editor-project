@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Editor, Element as SlateElement, Node } from 'slate'
 import { useSlate } from 'slate-react'
+
+import { YContext } from './YContext'
+
 export const Debug = (): React.ReactElement => {
   const editor = useSlate()
+  const ops = useContext(YContext)
   const parentListItem = Editor.nodes(editor, {
     match: (n) =>
       !Editor.isEditor(n) &&
@@ -25,6 +29,14 @@ export const Debug = (): React.ReactElement => {
       <div>
         parent of list-item:{' '}
         {node ? JSON.stringify(Node.parent(editor, node[1]), null, 2) : 'n/a'}
+      </div>
+      <div>
+        op history:{' '}
+        <ul>
+          {ops.map((op, index) => (
+            <li key={index}>{JSON.stringify(op)}</li>
+          ))}
+        </ul>
       </div>
     </div>
   )

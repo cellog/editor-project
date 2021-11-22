@@ -4771,6 +4771,11 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
+isomorphic.js@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/isomorphic.js/-/isomorphic.js-0.2.4.tgz#24ca374163ae54a7ce3b86ce63b701b91aa84969"
+  integrity sha512-Y4NjZceAwaPXctwsHgNsmfuPxR8lJ3f8X7QTAkhltrX4oGIv+eTlgHLXn4tWysC9zGTi929gapnPp+8F8cg7nA==
+
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
@@ -5551,6 +5556,13 @@ levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+lib0@^0.2.42, lib0@^0.2.43:
+  version "0.2.43"
+  resolved "https://registry.yarnpkg.com/lib0/-/lib0-0.2.43.tgz#1c2ed1fb2e9fe136e92abef7ca56875f2ee66b07"
+  integrity sha512-MJ1KLoz5p3gljIUBfdjjNuL/wlWHHK6+DrcIRhzSRLvtAu1XNdRtRGATYM51KSTI0P2nxJZFQM8rwCH6ga9KUw==
+  dependencies:
+    isomorphic.js "^0.2.4"
 
 limiter@^1.1.5:
   version "1.1.5"
@@ -7263,6 +7275,14 @@ slate-react@^0.66.4:
     scroll-into-view-if-needed "^2.2.20"
     tiny-invariant "1.0.6"
 
+slate-yjs@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/slate-yjs/-/slate-yjs-3.1.1.tgz#bf510f6ee16b1975fcfdd250dc5b33433811bff3"
+  integrity sha512-P1AvhFOgdrt84cS8R0pYK9211NGQOokv5zmnx2GcRndU7qtlanN9PowwpleuydmhWuve0zZjFCp5z9ioJHXfAg==
+  dependencies:
+    tiny-invariant "1.1.0"
+    y-protocols "^1.0.5"
+
 slate@^0.66.5:
   version "0.66.5"
   resolved "https://registry.yarnpkg.com/slate/-/slate-0.66.5.tgz#bdd93a4422891341dd18a31ff7810f5cae60e40a"
@@ -7729,6 +7749,11 @@ tiny-invariant@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.0.6.tgz#b3f9b38835e36a41c843a3b0907a5a7b3755de73"
   integrity sha512-FOyLWWVjG+aC0UqG76V53yAWdXfH8bO6FNmyZOuUrzDzK8DI3/JRY25UD7+g49JWM1LXwymsKERB+DzI0dTEQA==
+
+tiny-invariant@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
+  integrity sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==
 
 tiny-warning@^1.0.3:
   version "1.0.3"
@@ -8408,6 +8433,13 @@ xtend@^4.0.0, xtend@^4.0.2:
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
+y-protocols@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/y-protocols/-/y-protocols-1.0.5.tgz#91d574250060b29fcac8f8eb5e276fbad594245e"
+  integrity sha512-Wil92b7cGk712lRHDqS4T90IczF6RkcvCwAD0A2OPg+adKmOe+nOiT/N2hvpQIWS3zfjmtL4CPaH5sIW1Hkm/A==
+  dependencies:
+    lib0 "^0.2.42"
+
 y18n@^5.0.5:
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-5.0.8.tgz#7f4934d0f7ca8c56f95314939ddcd2dd91ce1d55"
@@ -8463,6 +8495,13 @@ yauzl@^2.10.0:
   dependencies:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.1.0"
+
+yjs@^13.5.22:
+  version "13.5.22"
+  resolved "https://registry.yarnpkg.com/yjs/-/yjs-13.5.22.tgz#576a92ff2705736317a8b7a6b18d34fc8e6103f0"
+  integrity sha512-qxsVlu/E2dLUUtJyhDbwkhrw1gWbdE+UWzVI2VEeY6G1M8TYI51VvXSoPC/4QQMNIyEdsCOW2cWxPUyoCH43gw==
+  dependencies:
+    lib0 "^0.2.43"
 
 yn@3.1.1:
   version "3.1.1"
