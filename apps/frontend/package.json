@@ -18,6 +18,7 @@
     "@mui/material": "^5.0.3",
     "is-hotkey": "^0.2.0",
     "next": "11.1.2",
+    "randomcolor": "^0.6.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-use-websocket": "^2.9.1",
@@ -31,6 +32,7 @@
     "yjs": "^13.5.22"
   },
   "devDependencies": {
+    "@types/randomcolor": "^0.5.6",
     "@types/react": "17.0.27",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",

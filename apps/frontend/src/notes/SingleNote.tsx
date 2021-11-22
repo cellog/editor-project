@@ -1,16 +1,17 @@
 import React from 'react'
 import { Editor } from '../editor'
-import { useNote } from './hooks'
 import { ReadyState } from 'react-use-websocket'
 
 import { Paper, TextField, Badge, BadgeTypeMap } from '@mui/material'
+import { useNote } from './hooks'
 
 interface SingleNoteProps {
   id: string
 }
 
 const Home: React.FC<SingleNoteProps> = ({ id }) => {
-  const { note, readyState } = useNote(id)
+  const readyState = ReadyState.OPEN
+  const { note } = useNote(id)
 
   const connectionStatusColor = {
     [ReadyState.CONNECTING]: 'info',
@@ -38,7 +39,7 @@ const Home: React.FC<SingleNoteProps> = ({ id }) => {
           flexDirection: 'column',
         }}
       >
-        <Editor initialValue={note.content} />
+        <Editor noteId={id} name={note.title} />
       </Paper>
     </>
   ) : null

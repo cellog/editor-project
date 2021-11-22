@@ -1,0 +1,5 @@
+declare module 'lib0'
+declare module 'lib0/dist/encoding.cjs'
+declare module 'lib0/dist/encoding'
+declare module 'lib0/dist/decoding.cjs'
+declare module 'lib0/dist/decoding'
