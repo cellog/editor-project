@@ -36,7 +36,7 @@ export const Editor: React.FC<EditorProps> = ({
   const renderLeaf = useCallback((props) => <CustomLeaf {...props} />, [])
   // note: withHtml must be AFTER withReact for copy/paste of html to preserve formatting, not sure why
   const editor = useMemo(
-    () => withHistory(withHtml(withReact(createEditor()))),
+    () => withReact(withHistory(withHtml(createEditor()))),
     []
   )
 
